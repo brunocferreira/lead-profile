@@ -2,11 +2,13 @@
 """
 Streamlit UI + orquestração do agente de localidade                               ✓
 """
-import streamlit as st
+from leadprofile.src.leadprofile.utils.excel_report import build_audit_excel
+from leadprofile.src.leadprofile.agents.web_research_agent import run_web_research
+from leadprofile.src.leadprofile.agents.location_agent import run_location_task
 import base64
-from agents.location_agent import run_location_task
-from agents.web_research_agent import run_web_research
-from leadprofile.utils.excel_report import build_audit_excel
+import streamlit as st
+import sys
+import pathlib
 
 st.set_page_config(
     page_title="Lead Profile Hunter – Localidade", layout="centered")

@@ -10,8 +10,8 @@ from typing import Dict, Any, List
 from crewai import Agent, Task, Crew
 from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
-from leadprofile.utils.cost import gpt4o_mini_cost
-from leadprofile.utils.usage import usage_to_dict
+from utils.cost import gpt4o_mini_cost
+from utils.usage import usage_to_dict
 
 from leadprofile.src.leadprofile.tools.ddd_scraper import scrape_claro_ddd
 

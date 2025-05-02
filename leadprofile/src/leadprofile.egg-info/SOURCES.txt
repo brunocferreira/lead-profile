@@ -8,8 +8,15 @@ leadprofile/src/leadprofile.egg-info/SOURCES.txt
 leadprofile/src/leadprofile.egg-info/dependency_links.txt
 leadprofile/src/leadprofile.egg-info/requires.txt
 leadprofile/src/leadprofile.egg-info/top_level.txt
+leadprofile/src/leadprofile/agents/location_agent.py
+leadprofile/src/leadprofile/agents/web_research_agent.py
 leadprofile/src/leadprofile/tools/__init__.py
 leadprofile/src/leadprofile/tools/custom_tool.py
 leadprofile/src/leadprofile/tools/ddd_scraper.py
 leadprofile/src/leadprofile/tools/page_summary_tool.py
 leadprofile/src/leadprofile/tools/website_content_tool.py
+leadprofile/src/leadprofile/utils/__init__.py
+leadprofile/src/leadprofile/utils/cost.py
+leadprofile/src/leadprofile/utils/excel_report.py
+leadprofile/src/leadprofile/utils/google_queries.py
+leadprofile/src/leadprofile/utils/usage.py

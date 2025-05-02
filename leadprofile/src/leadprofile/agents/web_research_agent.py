@@ -5,8 +5,8 @@ import json
 from typing import Dict, List
 from crewai import Agent, Task, Crew
 from crewai_tools import SerperDevTool
-from leadprofile.src.leadprofile.tools.website_content_tool import WebsiteContentTool
-from leadprofile.utils.google_queries import build_queries
+from tools.website_content_tool import WebsiteContentTool
+from utils.google_queries import build_queries
 from pydantic import BaseModel
 
 serper = SerperDevTool()
