@@ -2,9 +2,10 @@
 """
 Streamlit UI + orquestração do agente de localidade                               ✓
 """
-import streamlit as st                                         # st.text_input docs :contentReference[oaicite:8]{index=8}
+import streamlit as st
 import base64
 from agents.location_agent import run_location_task
+from agents.web_research_agent import run_web_research
 from leadprofile.utils.excel_report import build_audit_excel
 
 st.set_page_config(
@@ -31,7 +32,24 @@ if st.button("➜ Buscar Localidade", disabled=not all([name, phone, OPENAI_API_
                 f"({result['total_tokens']} tokens)"
             )
 
+            print(result)
+
             st.markdown(result["markdown"], unsafe_allow_html=False)
+
+            enriched = run_web_research(
+                name, phone, result["data"]["state"], OPENAI_API_KEY)
+
+            st.info(
+                f"Custo da tarefa: **US$ {enriched['usd_cost']:.6f}** "
+                f"({enriched['total_tokens']} tokens)"
+            )
+
+            st.markdown(enriched["markdown"], unsafe_allow_html=False)
+
+            section = "### Presença on‑line\n"
+            for e in enriched["entries"]:
+                section += f"* **{e['type'].capitalize()}** – [{e['title']}]({e['url']})  \n  {e['summary']}\n"
+            result["markdown"] += "\n" + section
 
             # Download Markdown
             b64_md = base64.b64encode(result["markdown"].encode()).decode()

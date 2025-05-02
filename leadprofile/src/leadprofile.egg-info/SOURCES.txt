@@ -11,3 +11,5 @@ leadprofile/src/leadprofile.egg-info/top_level.txt
 leadprofile/src/leadprofile/tools/__init__.py
 leadprofile/src/leadprofile/tools/custom_tool.py
 leadprofile/src/leadprofile/tools/ddd_scraper.py
+leadprofile/src/leadprofile/tools/page_summary_tool.py
+leadprofile/src/leadprofile/tools/website_content_tool.py

@@ -15,3 +15,33 @@ ddd_task:
   expected_output: >
     JSON válido com "state", "cities" e "url".
   agent: location_identifier
+
+# config/tasks.yaml
+web_research_task:
+  description: >
+    Gere consultas Google especializadas para {name} usando operadores:
+      • LinkedIn slug, redes sociais, site:.jus.br, filetype:pdf,
+        intitle:, intext:notícia
+    Use SerperDevTool. Limite 10 URLs por consulta ou 15 s de busca.
+    Para cada URL, aplique WebsiteContentTool.
+    Devolva JSON com:
+      - employment
+      - lawsuits
+      - media_mentions
+      - social_profiles: mapa {rede: url_encontrada}
+      - sources: lista de URLs (máx 15)
+  expected_output: >
+    JSON válido com employment, lawsuits, media_mentions, social_profiles, sources
+  agent: web_researcher
+
+content_enrich_task:
+  description: >
+    Receba 'search_json' (string JSON). Para cada
+    social_profiles e sources, use page_summary para obter
+    título + resumo. Devolva um JSON:
+      - overview: string (síntese agregada)
+      - entries: lista de objetos:
+          {type: 'linkedin'|'notícia'|..., title, summary, url}
+  expected_output: >
+    JSON válido com overview e entries
+  agent: content_enricher

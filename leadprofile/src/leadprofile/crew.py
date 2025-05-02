@@ -42,6 +42,12 @@ class Leadprofile():
             verbose=True
         )
 
+    def content_enricher(self) -> Agent:
+        return Agent(
+            config=self.agents_config['content_enricher'],
+            verbose=True
+        )
+
     # To learn more about structured task outputs,
     # task dependencies, and task callbacks, check out the documentation:
     # https://docs.crewai.com/concepts/tasks#overview-of-a-task
@@ -50,6 +56,13 @@ class Leadprofile():
     def ddd_task(self) -> Task:
         return Task(
             config=self.tasks_config['ddd_task'],
+            # output_file='relatorio.md'
+            output_json=LocationResult
+        )
+
+    def content_enrich_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['content_enrich_task'],
             # output_file='relatorio.md'
             output_json=LocationResult
         )
